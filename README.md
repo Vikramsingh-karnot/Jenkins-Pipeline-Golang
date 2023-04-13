@@ -1,13 +1,13 @@
-# go-webapp-sample
+# CICD Pipeline for go-webapp using Jenkins 
 
 
 
 ## Preface
 This repository is the sample of web application using golang.
 This sample application provides only several functions as Web APIs.
-Please refer to the 'Service' section about the detail of those functions.
+In this folder I have written a jenkins pipeline code which helps in integration and deployment 
 
-Also, this application contains the static contents such as html file, css file and javascript file which built [vuejs-webapp-sample](https://github.com/ybkuroki/vuejs-webapp-sample) project to easily check the behavior of those functions.
+Also, this application contains the static contents such as html file, css file and javascript file which built [vuejs-webapp-sample]
 So, you can check this application without starting a web server for front end.
 Please refer to the 'Starting Server' section about checking the behavior of this application.
 
@@ -15,30 +15,17 @@ If you would like to develop a web application using golang, please feel free to
 
 ## Install
 Perform the following steps:
-1. Download and install [MinGW(gcc)](https://sourceforge.net/projects/mingw-w64/files/?source=navbar).
-1. Download and install [Visual Studio Code(VS Code)](https://code.visualstudio.com/).
-1. Download and install [Golang](https://golang.org/).
-1. Get the source code of this repository by the following command.
-    ```bash
-    go get -u github.com/ybkuroki/go-webapp-sample
-    ```
+1. Install "Go Plugin" in Jenkins and make changes in global configuration tools for golang. 
+1. Create a new pipeline and copy paste the code from jenkinsFile. 
+1. build it.  
 
-## Starting Server
-There are 2 methods for starting server.
-
-### Without Web Server
-1. Starting this web application by the following command.
-    ```bash
-    go run main.go
-    ```
-1. When startup is complete, the console shows the following message:
-    ```
-    http server started on [::]:8080
-    ```
+## Access Aplication from Browser
 1. Access [http://localhost:8080](http://localhost:8080) in your browser.
     Login with the following username and password.
     - username : ``test``
     - password : ``test``
+
+##Output snippits
 
 ![image](https://user-images.githubusercontent.com/56182370/231826560-8d1f9e2e-6bcf-4ac5-8483-3d020ef4e84f.png)
 
