@@ -1,0 +1,73 @@
+pipeline{
+    agent any
+    tools{
+        go 'go-1.18'
+    }
+    environment{
+        GO111MODULE = 'on'
+    }
+    stages{
+            stage("Test"){
+                steps{
+                            git 'https://github.com/AdminTurnedDevOps/go-webapp-sample.git'
+                            sh 'go test ./...'
+                }
+                post{
+                    always{
+                        echo "Test Stage"
+                    }
+                    success{
+                        echo "Completed successfully"
+                    }
+                    failure{
+                        echo "Execution failed"
+                    }
+                }
+            }
+            stage("Building and Run"){
+                steps{
+                        git 'https://github.com/AdminTurnedDevOps/go-webapp-sample.git'
+                        sh 'go build .'
+                        sh './go-webapp-sample'
+                }
+                post{
+                    always{
+                        echo "Build Stage"
+                    }
+                    success{
+                        echo "Executed successfully"
+                    }
+                    failure{
+                        echo "Execution failed"
+                    }
+                }
+            }
+            stage("Run"){
+                steps{
+                        sh 'cd /var/lib/jenkins/workspace/go-full-pipeline && go-web-sample &'
+                }
+                post{
+                    always{
+                        echo "Run Stage"
+                    }
+                    success{
+                        echo "Ran successfully"
+                    }
+                    failure{
+                        echo "Execution failed"
+                    }
+                }
+            }
+        }
+    post{
+        always{
+            echo "Pipeline Go3"
+        }
+        success{
+            echo "Pipeline executed successfully"
+        }
+        failure{
+            echo "Pipeline execution failed"
+        }
+    }
+}
